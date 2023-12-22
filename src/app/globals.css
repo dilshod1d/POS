@@ -16,12 +16,33 @@
   }
 }
 
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply max-h-screen;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-gray-800 bg-white;
+  }
+}
+
+/* Add this to your index.css or where you define global styles */
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
 }
