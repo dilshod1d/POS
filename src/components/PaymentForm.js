@@ -27,7 +27,7 @@ export default function PaymentForm({ onClose }) {
   };
 
   return (
-    <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
+    <div className="bg-gray-700 p-4 rounded-lg">
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Card Number */}
         <div>

@@ -1,35 +1,17 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import SwitchThemeButton from "./components/SwitchThemeButton";
+import SwitchThemeButton from "../components/SwitchThemeButton";
 import { ThemeProvider } from "next-themes";
 import Head from "next/head";
-import Sidebar from "./components/Sidebar";
-import MainContent from "./components/MainContent";
+import Sidebar from "../components/Sidebar";
+import MainContent from "../components/MainContent";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import OrderSummary from "./components/OrderSummary";
+import OrderSummary from "../components/OrderSummary";
+import SearchBar from "../components/SearchBar";
+import Footer from "../components/Footer";
 
 export default function Home() {
-  const [items, setItems] = useState([]);
-
-  // Function to add item to cart
-  const addItemToCart = (newItem) => {
-    // Check if item already exists in the cart
-    const existingItem = items.find((item) => item.id === newItem.id);
-    if (existingItem) {
-      // Increase the quantity
-      setItems(
-        items.map((item) =>
-          item.id === newItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      // Add new item to the cart
-      setItems([...items, { ...newItem, quantity: 1 }]);
-    }
-  };
   return (
     <ThemeProvider attribute="class">
       <div className="bg-gray-900 max-h-screen">
@@ -39,22 +21,22 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className="h-screen overflow-auto">
-          <div className="grid grid-cols-12 gap-4">
-            {/* Sidebar */}
-            <div className="col-span-2 p-1">
-              <Sidebar />
-            </div>
+        <main className="flex h-screen">
+          {/* Sidebar */}
+          <div className="sticky top-0 h-screen p-1">
+            <Sidebar />
+          </div>
 
-          
-            <div className="col-span-7 rounded-lg shadow-lg p-4">
-              <MainContent />
-            </div>
+          {/* Scrollable Middle Content */}
+          <div className="overflow-auto flex-grow rounded-lg shadow-lg p-4 hide-scrollbar">
+            <SearchBar />
+            <MainContent />
+            <Footer />
+          </div>
 
-            {/* Right Sidebar */}
-            <div className="col-span-3 bg-gray-700">
-              <OrderSummary />
-            </div>
+          {/* Right Sidebar */}
+          <div className="sticky top-0 h-screen bg-gray-700 flex-none w-[350px]">
+            <OrderSummary />
           </div>
         </main>
       </div>

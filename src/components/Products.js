@@ -15,10 +15,6 @@ export default function Products() {
     { name: "Burger", price: 4.99, imageSrc: "/burger.png" },
     { name: "Fries", price: 1.49, imageSrc: "/fries.png" },
     { name: "Hotdog", price: 3.49, imageSrc: "/hotdog.png" },
-    { name: "Pizza", price: 7.99, imageSrc: "/pizza.png" },
-    { name: "Donut", price: 1.49, imageSrc: "/donuts.png" },
-    { name: "Pizza", price: 7.99, imageSrc: "/pizza.png" },
-    { name: "Donut", price: 1.49, imageSrc: "/donuts.png" },
   ];
 
   const handleAddToCart = (product) => {
@@ -28,7 +24,7 @@ export default function Products() {
 
   return (
     <div className="bg-gray-900 flex items-center justify-center w-full">
-      <div className="grid grid-cols-1 md:grid-cols-6 gap-4 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 w-full">
         {products.map((product, index) => (
           <div
             key={index}
